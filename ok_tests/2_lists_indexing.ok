@@ -1,0 +1,14 @@
+{
+  "name": "2_lists_indexing",
+  "src": [
+    "2_lists_indexing.ipynb"
+  ],
+  "tests": {
+      "ok_tests/2_lists_indexing/q*.py": "ok_test"
+  },
+  "protocols": [
+      "file_contents",
+      "grading",
+      "backup"
+  ]
+}

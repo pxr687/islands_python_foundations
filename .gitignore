@@ -1,0 +1,6 @@
+.ipynb_checkpoints/
+__pycache__/
+.ok_storage.bak
+.ok_storage.dat
+.ok_storage.dir
+*.Rmd

@@ -1,0 +1,14 @@
+{
+  "name": "3_functions_plotting",
+  "src": [
+    "3_functions_plotting.ipynb"
+  ],
+  "tests": {
+      "ok_tests/3_functions_plotting/q*.py": "ok_test"
+  },
+  "protocols": [
+      "file_contents",
+      "grading",
+      "backup"
+  ]
+}

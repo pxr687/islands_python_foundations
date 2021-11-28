@@ -1,0 +1,14 @@
+{
+  "name": "4_arrays_booleans",
+  "src": [
+    "4_arrays_booleans.ipynb"
+  ],
+  "tests": {
+      "ok_tests/4_arrays_booleans/q*.py": "ok_test"
+  },
+  "protocols": [
+      "file_contents",
+      "grading",
+      "backup"
+  ]
+}
