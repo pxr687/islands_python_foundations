@@ -44,7 +44,9 @@ def trial_pop_plot(placebo_change, drug_change, seed = 300, pop_size = 1000):
     _np.random.seed(seed)
     
     # generating a population consistent with the null hypothesis
-    pop_scores = _np.random.choice(['+', '-'],p = [0.2, 0.8],  size = pop_size)
+    # equal number of 
+    pop_scores = _np.append(_np.repeat('+', int(pop_size/5)),_np.repeat('-', int( 4* pop_size/5)))
+    pop_scores = _np.random.choice(pop_scores, size = len(pop_scores))
     x_coord = _np.random.choice(_np.linspace(-18.6, 13.3, 1000 ), replace = False, size = pop_size)
     y_coord = _np.random.choice(_np.linspace(-14.2, 8.9, 1000), replace = False, size = pop_size)
     pop_df = _pd.DataFrame({'change': pop_scores,
