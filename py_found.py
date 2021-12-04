@@ -44,12 +44,14 @@ def trial_pop_plot(seed = 300, pop_size = 1000):
     _np.random.seed(seed)
     
     # generating a population consistent with the null hypothesis
-    # equal number of +/- in placebo and intervention group
-    equal_group_size = 250
-    placebo_plus = _np.repeat('+', equal_group_size)
-    placebo_minus= _np.repeat('-', equal_group_size)
-    drug_plus = _np.repeat('+', equal_group_size)
-    drug_minus= _np.repeat('-', equal_group_size)
+    # equal number of +/- in placebo and intervention group (proportion in both groups 
+    # is the same as the placebo positive proportion in the acutal sample
+    positive_group_size = 180
+    negative_group_size = int(500 - positive_group_size)
+    placebo_plus = _np.repeat('+', positive_group_size)
+    placebo_minus= _np.repeat('-', negative_group_size)
+    drug_plus = _np.repeat('+', positive_group_size)
+    drug_minus= _np.repeat('-', negative_group_size)
     all_scores = _np.concatenate([placebo_plus, placebo_minus, drug_plus, drug_minus])
     group_labels = _np.repeat('placebo', 500)
     group_labels = _np.append(group_labels, _np.repeat('drug', 500))
@@ -135,6 +137,52 @@ def trial_sample_plot(pop_df, placebo, drug, placebo_change, drug_change, seed =
            color = ['darkgreen', 'darkred'])
     _plt.ylabel('% improved')
     _plt.show()
+    
+    
+def actual_sample_plot_repeated(trial_df, seed = 300, figsize = (10,5), num_repeats = 5):
+    '''
+    This function shows the shuffling process the actual sample.'''
+    
+    # randomly getting x y coordinates for the raw data plot
+    x_coord = _np.random.choice(_np.linspace(-18.6, 13.3, 1000 ), replace = False, size = len(trial_df))
+    y_coord = _np.random.choice(_np.linspace(-14.2, 8.9, 1000), replace = False, size = len(trial_df))
+    
+    for i in _np.arange(num_repeats):
+    
+        trial_df['x'] = x_coord
+        trial_df['y'] = y_coord
+        
+        # shuffling the group labels, under the null
+        trial_df['group'] = _np.random.permutation(trial_df['group'])
+        
+        placebo_sample = trial_df[trial_df['group'] == 'placebo']
+        drug_sample = trial_df[trial_df['group'] == 'drug']
+        
+        
+        # show the sample, and the proportion of positive changes in the sample (drug vs placebo)
+        _plt.figure(figsize = figsize)
+        _plt.subplot(1,2,1)
+        _plt.suptitle('Shuffling the Actual Sample\nRepeat Number:'+str(i+1), y = 1)
+        _plt.scatter(placebo_sample[placebo_sample['change'] == '+']['x'] , placebo_sample[placebo_sample['change'] == '+']['y'], 
+                    marker = '+', color = 'green', label = 'placebo positive change')
+        _plt.scatter(placebo_sample[placebo_sample['change'] == '-']['x'] , placebo_sample[placebo_sample['change'] == '-']['y'] , 
+                    marker = "_", color = 'green', label = 'placebo negative change')
+        _plt.scatter(drug_sample[drug_sample['change'] == '+']['x'] , drug_sample[drug_sample['change'] == '+']['y'], 
+                    marker = '+', color = 'red', label = 'drug positive change')
+        _plt.scatter(drug_sample[drug_sample['change'] == '-']['x'] , drug_sample[drug_sample['change'] == '-']['y'] , 
+                    marker = "_", color = 'red', label = 'drug negative change')
+        _plt.xticks([])
+        _plt.yticks([])
+        _plt.legend(bbox_to_anchor=(0.7, -0.03))
+
+        _plt.scatter(trial_df['x'] , trial_df['y'], 
+                    alpha = 0)
+        _plt.subplot(1,2,2)
+        _plt.bar(['placebo', 'drug'], 
+                [_np.sum(placebo_sample['change'] == '+')/len(placebo_sample)*100, _np.sum(drug_sample['change'] == '+')/len(drug_sample)*100 ],
+               color = ['darkgreen', 'darkred'])
+        _plt.ylabel('% improved')
+        _plt.show()
 
 
    
