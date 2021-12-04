@@ -29,7 +29,7 @@ def data_gen_trial(seed = 1000):
     drug_change =  _np.random.choice(['+', '-'], p = [0.5, 0.5], size = n2)   
     
     trial_df = _pd.DataFrame({'group': _np.append(_np.repeat('placebo', len(placebo_change)), 
-                                            _np.repeat('adirudin', len(drug_change))),
+                                            _np.repeat('drug', len(drug_change))),
                         'change': _np.append(placebo_change, drug_change)})
 
     return placebo_change, drug_change, trial_df
