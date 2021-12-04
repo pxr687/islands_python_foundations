@@ -35,7 +35,7 @@ def data_gen_trial(seed = 1000):
     return placebo_change, drug_change, trial_df
 
 
-def trial_pop_plot(placebo_change, drug_change, seed = 300, pop_size = 1000):
+def trial_pop_plot(seed = 300, pop_size = 1000):
     
     '''
     This function generates a plot of a population consistent with the null hypothesis,
@@ -44,19 +44,24 @@ def trial_pop_plot(placebo_change, drug_change, seed = 300, pop_size = 1000):
     _np.random.seed(seed)
     
     # generating a population consistent with the null hypothesis
-    # equal number of 
-    pop_scores = _np.append(_np.repeat('+', int(pop_size/5)),_np.repeat('-', int( 4* pop_size/5)))
-    pop_scores = _np.random.choice(pop_scores, size = len(pop_scores))
+    # equal number of +/- in placebo and intervention group
+    equal_group_size = 250
+    placebo_plus = _np.repeat('+', equal_group_size)
+    placebo_minus= _np.repeat('-', equal_group_size)
+    drug_plus = _np.repeat('+', equal_group_size)
+    drug_minus= _np.repeat('-', equal_group_size)
+    all_scores = _np.concatenate([placebo_plus, placebo_minus, drug_plus, drug_minus])
+    group_labels = _np.repeat('placebo', 500)
+    group_labels = _np.append(group_labels, _np.repeat('drug', 500))
     x_coord = _np.random.choice(_np.linspace(-18.6, 13.3, 1000 ), replace = False, size = pop_size)
     y_coord = _np.random.choice(_np.linspace(-14.2, 8.9, 1000), replace = False, size = pop_size)
-    pop_df = _pd.DataFrame({'change': pop_scores,
+    pop_df = _pd.DataFrame({'change': all_scores,
+                           'group': group_labels,
                           'x': x_coord,
                           'y': y_coord})
     
-    # half of the population receive placebo, half receive the drug
-    placebo = pop_df.iloc[:int(len(pop_df)/2)]
-    
-    drug = pop_df.iloc[int(len(pop_df)/2):]
+    placebo = pop_df[pop_df['group'] == 'placebo']
+    drug = pop_df[pop_df['group'] == 'drug']
     
     # show the '+' or '-' change of every member of the hypothetical population
     _plt.figure(figsize = (16, 8))
