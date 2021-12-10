@@ -138,25 +138,84 @@ def trial_sample_plot(pop_df, placebo, drug, placebo_change, drug_change, seed =
     _plt.ylabel('% improved')
     _plt.show()
     
+def get_x_y_sample(trial_df):
+    '''
+    A function to get x y coordinates for a raw data plot of the sample in the clinical trial example.
+    '''
+    
+    _np.random.seed(300)
+    # getting x y coordinates for the raw data plot
+    x_coord = _np.random.choice(_np.linspace(-18.6, 13.3, 1000 ), replace = False, size = len(trial_df))
+    y_coord = _np.random.choice(_np.linspace(-14.2, 8.9, 1000), replace = False, size = len(trial_df))
+    
+    return x_coord, y_coord
+    
+def raw_sample_plot(trial_df, figsize = (10,5)):
+
+    '''
+    This function plots the raw data from the actual trial, alongside the bar plot.
+    '''
+    
+    # get the x y coordinates for the raw data plot
+    x_coord, y_coord = get_x_y_sample(trial_df)
+    
+    function_trial_df = trial_df.copy()
+        
+    function_trial_df['x'] = x_coord
+    function_trial_df['y'] = y_coord
+        
+        
+    placebo_sample = function_trial_df[function_trial_df['group'] == 'placebo']
+    drug_sample = function_trial_df[function_trial_df['group'] == 'drug']
+        
+        
+    # show the sample, and the proportion of positive changes in the sample (drug vs placebo)
+    _plt.figure(figsize = figsize)
+    _plt.subplot(1,2,1)
+    _plt.suptitle('Actual Sample Data', y = 1)
+    _plt.scatter(placebo_sample[placebo_sample['change'] == '+']['x'] , placebo_sample[placebo_sample['change'] == '+']['y'], 
+                    marker = '+', color = 'green', label = 'placebo positive change')
+    _plt.scatter(placebo_sample[placebo_sample['change'] == '-']['x'] , placebo_sample[placebo_sample['change'] == '-']['y'] , 
+                    marker = "_", color = 'green', label = 'placebo negative change')
+    _plt.scatter(drug_sample[drug_sample['change'] == '+']['x'] , drug_sample[drug_sample['change'] == '+']['y'], 
+                    marker = '+', color = 'red', label = 'drug positive change')
+    _plt.scatter(drug_sample[drug_sample['change'] == '-']['x'] , drug_sample[drug_sample['change'] == '-']['y'] , 
+                    marker = "_", color = 'red', label = 'drug negative change')
+    _plt.xticks([])
+    _plt.yticks([])
+    _plt.legend(bbox_to_anchor=(0.7, -0.03))
+
+    _plt.scatter(function_trial_df['x'] , function_trial_df['y'], 
+                    alpha = 0)
+    _plt.subplot(1,2,2)
+    _plt.bar(['placebo', 'drug'], 
+                [_np.sum(placebo_sample['change'] == '+')/len(placebo_sample)*100, _np.sum(drug_sample['change'] == '+')/len(drug_sample)*100 ],
+               color = ['green', 'red'])
+    _plt.ylabel('% improved')
+    _plt.show()
+    
     
 def actual_sample_plot_repeated(trial_df, seed = 300, figsize = (10,5), num_repeats = 5):
     '''
     This function shows the shuffling process the actual sample.'''
     
-    # randomly getting x y coordinates for the raw data plot
-    x_coord = _np.random.choice(_np.linspace(-18.6, 13.3, 1000 ), replace = False, size = len(trial_df))
-    y_coord = _np.random.choice(_np.linspace(-14.2, 8.9, 1000), replace = False, size = len(trial_df))
+    # get the x y coordinates for the raw data plot
+    x_coord, y_coord = get_x_y_sample(trial_df)
+    
+    function_trial_df = trial_df.copy()
     
     for i in _np.arange(num_repeats):
     
-        trial_df['x'] = x_coord
-        trial_df['y'] = y_coord
+        _np.random.seed()
+    
+        function_trial_df['x'] = x_coord
+        function_trial_df['y'] = y_coord
         
         # shuffling the group labels, under the null
-        trial_df['group'] = _np.random.permutation(trial_df['group'])
+        function_trial_df['group'] = _np.random.permutation(function_trial_df['group'])
         
-        placebo_sample = trial_df[trial_df['group'] == 'placebo']
-        drug_sample = trial_df[trial_df['group'] == 'drug']
+        placebo_sample = function_trial_df[function_trial_df['group'] == 'placebo']
+        drug_sample = function_trial_df[function_trial_df['group'] == 'drug']
         
         
         # show the sample, and the proportion of positive changes in the sample (drug vs placebo)
@@ -164,18 +223,18 @@ def actual_sample_plot_repeated(trial_df, seed = 300, figsize = (10,5), num_repe
         _plt.subplot(1,2,1)
         _plt.suptitle('Shuffling the Actual Sample\nRepeat Number:'+str(i+1), y = 1)
         _plt.scatter(placebo_sample[placebo_sample['change'] == '+']['x'] , placebo_sample[placebo_sample['change'] == '+']['y'], 
-                    marker = '+', color = 'green', label = 'placebo positive change')
+                    marker = '+', color = 'darkgreen', label = 'placebo positive change')
         _plt.scatter(placebo_sample[placebo_sample['change'] == '-']['x'] , placebo_sample[placebo_sample['change'] == '-']['y'] , 
-                    marker = "_", color = 'green', label = 'placebo negative change')
+                    marker = "_", color = 'darkgreen', label = 'placebo negative change')
         _plt.scatter(drug_sample[drug_sample['change'] == '+']['x'] , drug_sample[drug_sample['change'] == '+']['y'], 
-                    marker = '+', color = 'red', label = 'drug positive change')
+                    marker = '+', color = 'darkred', label = 'drug positive change')
         _plt.scatter(drug_sample[drug_sample['change'] == '-']['x'] , drug_sample[drug_sample['change'] == '-']['y'] , 
-                    marker = "_", color = 'red', label = 'drug negative change')
+                    marker = "_", color = 'darkred', label = 'drug negative change')
         _plt.xticks([])
         _plt.yticks([])
         _plt.legend(bbox_to_anchor=(0.7, -0.03))
 
-        _plt.scatter(trial_df['x'] , trial_df['y'], 
+        _plt.scatter(function_trial_df['x'] , function_trial_df['y'], 
                     alpha = 0)
         _plt.subplot(1,2,2)
         _plt.bar(['placebo', 'drug'], 
@@ -183,7 +242,7 @@ def actual_sample_plot_repeated(trial_df, seed = 300, figsize = (10,5), num_repe
                color = ['darkgreen', 'darkred'])
         _plt.ylabel('% improved')
         _plt.show()
-
+        
 
    
 def data_gen_pollution(seed = 1000, pop_size = 1000, samp_size = 100):
