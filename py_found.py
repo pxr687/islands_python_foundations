@@ -245,7 +245,7 @@ def actual_sample_plot_repeated(trial_df, seed = 300, figsize = (10,5), num_repe
         
 
    
-def data_gen_pollution(seed = 1000, pop_size = 1000, samp_size = 100):
+def data_gen_pollution(seed = 1500, pop_size = 1000, samp_size = 100):
     
     """A function to generate the population/sample data for the first page.
     Generates a null and alternate population of 
