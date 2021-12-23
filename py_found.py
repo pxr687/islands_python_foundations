@@ -399,3 +399,41 @@ def pearson_plot(pollutant_exposure):
     _plt.xlabel('Perfect Positive \n Linear Relationship')
     
     _plt.show()
+    
+def function_plot_page_setup():
+        
+        '''
+        Sets up the data etc. needed for the 'functions and plotting' page.
+        '''
+        # getting the lists used on the 'lists_indexing' page
+        psychosis_status_observations = ['psychotic', 'not_psychotic', 'not_psychotic', 'not_psychotic', 'psychotic']
+        observations_sex = ['male', 'male', 'female', 'female', 'female']
+        psychosis_scores = [80, 20, 14, 13, 91]
+        names = ['roy', 'david','lucy', 'aiesha', 'amelia']
+
+        # some new data we need for the current exercise
+        _np.random.seed(1000)
+        psychosis_score_200_patients = _np.random.normal(78, 2, size = 200)
+        psychosis_score_200_patients = psychosis_score_200_patients.astype('int')
+        psychosis_score_200_patients[psychosis_score_200_patients > _np.quantile(psychosis_score_200_patients, .8)] = psychosis_score_200_patients[psychosis_score_200_patients >_np.quantile(psychosis_score_200_patients, .8)] + _np.random.normal(6, 3, size = len(psychosis_score_200_patients[psychosis_score_200_patients > _np.quantile(psychosis_score_200_patients, .8)]))
+        num_hospitalisations = -30 + _np.round(0.5 * psychosis_score_200_patients) + _np.round(_np.random.normal(0, 1, size = 200))
+        
+        return psychosis_status_observations, observations_sex, psychosis_scores, names, psychosis_score_200_patients, num_hospitalisations
+    
+def another_trial_gen():
+    
+    '''
+    Generates and plots the trial data for the Fentacriptine question.
+    '''
+
+    drug_a = _np.random.normal(80, 2, 100)
+
+    drug_b = _np.random.normal(76, 2, 100)
+    
+    _plt.hist(drug_a)
+    _plt.hist(drug_b, alpha = 0.5)
+    _plt.xlabel('Psychosis Score')
+    _plt.ylabel('Frequency')
+    _plt.show()
+    
+    return drug_a, drug_b
