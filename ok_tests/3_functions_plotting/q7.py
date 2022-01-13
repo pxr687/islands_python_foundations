@@ -6,8 +6,8 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> # difference_in_medians does not contain the correct value! Did you subtract the median of the `drug` scores from the median of the `placebo` scores?
-          >>> difference_in_medians == np.median(placebo) - np.median(drug)
+          >>> # highest_score does not contain the correct value! Did you use the correct function from the list above?
+          >>> highest_score == np.max(psychosis_score_200_patients)
           True
 
           """,

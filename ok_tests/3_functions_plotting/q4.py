@@ -6,8 +6,8 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> # highest_score does not contain the correct value! Did you use the correct function from the list above?
-          >>> highest_score == np.max(psychosis_score_200_patients)
+          >>> # combined_groups does not contain all of the scores from the `placebo` group and the `drug` group. Did you use `np.append()` to combine the `placebo` group and the `drug` group arrays?
+          >>> len(np.setdiff1d(combined_groups, np.append(placebo, drug))) == 0
           True
 
           """,

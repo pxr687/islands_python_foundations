@@ -425,10 +425,11 @@ def another_trial_gen():
     '''
     Generates and plots the trial data for the Fentacriptine question.
     '''
-
+    _np.random.seed(2000)
+    
     placebo = _np.random.normal(80, 2, 100).astype('int')
 
-    drug = _np.random.normal(76, 2, 100).astype('int')
+    drug = _np.random.normal(77, 2, 100).astype('int')
     
     _plt.hist(placebo, label = 'placebo group')
     _plt.hist(drug, alpha = 0.5, label = 'drug group')
@@ -438,3 +439,125 @@ def another_trial_gen():
     _plt.show()
     
     return placebo, drug
+
+def another_trial_pop_illustration(placebo, drug):
+    
+    population =  _np.random.normal(_np.mean([placebo.mean(),drug.mean()]), 1, 100000)
+
+    population_placebo = _np.random.normal(_np.mean(placebo), 0.9, 50000)
+    population_drug = _np.random.normal(_np.mean(drug), 0.9, 50000)
+    
+    placebo_samp =_np.random.choice(population_placebo, size =10000)
+    drug_samp =_np.random.choice(population_drug, size = 10000)
+    
+    _plt.figure(figsize = (16, 6)) 
+    _plt.subplot(1,2,1)
+    _plt.hist(population,color = 'black', label = 'underlying population')
+    _plt.hist(placebo_samp, label = 'placebo group')
+    _plt.hist(drug_samp, alpha = 0.5, label = 'drug group')
+    _plt.yticks([])
+    _plt.xlabel('Psychosis Score')
+    _plt.ylabel('Number of Scores')
+    _plt.legend(bbox_to_anchor = (1,1))
+    _plt.title('The Null World')
+    
+    
+    
+    _plt.subplot(1,2,2)
+    _plt.hist(population_placebo,color = 'darkred', label = 'underlying placebo population')
+    _plt.hist(population_drug,color = 'darkblue', label = 'underlying drug population')
+    _plt.hist(placebo_samp, label = 'placebo group')
+    _plt.hist(drug_samp, alpha = 0.5, label = 'drug group')
+    _plt.xlabel('Psychosis Score')
+    _plt.ylabel('Number of Scores')
+    _plt.yticks([])
+    _plt.legend(bbox_to_anchor = (1,1))
+    _plt.title('The Alternate World')
+    _plt.show()
+    
+def another_trial_pop_resample(placebo, drug):
+    
+    population =  _np.random.normal(_np.mean([placebo.mean(),drug.mean()]), 1, 100000)
+    
+    population_placebo = _np.random.normal(_np.mean(placebo), 0.9, 50000)
+    population_drug = _np.random.normal(_np.mean(drug), 0.9, 50000)
+
+    sample = _np.random.choice(population, size = 20000)
+    placebo = sample[:10000]
+    drug  = sample[10000:]
+        
+    _plt.figure(figsize = (16, 6)) 
+    _plt.subplot(1,2,1)
+    _plt.hist(population,color = 'black', label = 'underlying population')
+    _plt.hist(placebo, label = 'placebo group')
+    _plt.hist(drug, alpha = 0.5, label = 'drug group')
+    _plt.xlabel('Psychosis Score')
+    _plt.ylabel('Number of Scores')
+    _plt.yticks([])
+    _plt.legend(bbox_to_anchor = (1,1))
+    _plt.title('The Null World')
+        
+        
+
+    placebo =  _np.random.choice(population_placebo, size = 10000)
+    drug  = _np.random.choice(population_drug, size = 10000)
+        
+    _plt.subplot(1,2,2)
+    _plt.hist(population_placebo,color = 'darkred', label = 'underlying placebo population')
+    _plt.hist(population_drug,color = 'darkblue', label = 'underlying drug population')
+    _plt.hist(placebo, label = 'placebo group')
+    _plt.hist(drug, alpha = 0.5, label = 'drug group')
+    _plt.xlabel('Psychosis Score')
+    _plt.ylabel('Number of Scores')
+    _plt.yticks([])
+    _plt.legend(bbox_to_anchor = (1,1))
+    _plt.title('The Alternate World')
+    _plt.show()
+    
+def another_trial_pop_resample_with_medians(placebo, drug):
+    
+    population =  _np.random.normal(_np.mean([placebo.mean(),drug.mean()]), 1, 100000)
+    
+    population_placebo = _np.random.normal(_np.mean(placebo), 0.9, 50000)
+    population_drug = _np.random.normal(_np.mean(drug), 0.9, 50000)
+
+    sample = _np.random.choice(population, size = 20000)
+    placebo = sample[:10000]
+    drug  = sample[10000:]
+    
+    together = _np.append(placebo, drug)
+        
+    _plt.figure(figsize = (16, 6)) 
+    _plt.subplot(1,2,1)
+    _plt.hist(population,color = 'black', label = 'underlying population')
+    _plt.hist(placebo, label = 'placebo group')
+    _plt.hist(drug, alpha = 0.5, label = 'drug group')
+    _plt.xlabel('Psychosis Score')
+    _plt.ylabel('Number of Scores')
+    _plt.yticks([])
+    _plt.axvline(_np.median(placebo), color = 'cyan', label = 'placebo median')
+    _plt.axvline(_np.median(drug), color = 'crimson', label = 'drug median')
+    _plt.axvline(_np.median(together), color = 'yellow', label = 'median of both groups combined')
+    _plt.title('The Null World')
+        
+        
+
+    placebo =  _np.random.choice(population_placebo, size = 10000)
+    drug  = _np.random.choice(population_drug, size = 10000)
+    
+    together = _np.append(placebo, drug)
+        
+    _plt.subplot(1,2,2)
+    _plt.hist(population_placebo,color = 'darkred', label = 'underlying placebo population')
+    _plt.hist(population_drug,color = 'darkblue', label = 'underlying drug population')
+    _plt.hist(placebo, label = 'placebo group')
+    _plt.hist(drug, alpha = 0.5, label = 'drug group')
+    _plt.xlabel('Psychosis Score')
+    _plt.ylabel('Number of Scores')
+    _plt.yticks([])
+    _plt.title('The Alternate World')
+    _plt.axvline(_np.median(placebo), color = 'cyan', label = 'placebo median')
+    _plt.axvline(_np.median(drug), color = 'crimson', label = 'drug median')
+    _plt.axvline(_np.median(together), color = 'yellow', label = 'median of both groups combined')
+    _plt.legend(bbox_to_anchor = (1,1))
+    _plt.show()
