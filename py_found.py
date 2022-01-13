@@ -426,14 +426,15 @@ def another_trial_gen():
     Generates and plots the trial data for the Fentacriptine question.
     '''
 
-    drug_a = _np.random.normal(80, 2, 100)
+    placebo = _np.random.normal(80, 2, 100).astype('int')
 
-    drug_b = _np.random.normal(76, 2, 100)
+    drug = _np.random.normal(76, 2, 100).astype('int')
     
-    _plt.hist(drug_a)
-    _plt.hist(drug_b, alpha = 0.5)
+    _plt.hist(placebo, label = 'placebo group')
+    _plt.hist(drug, alpha = 0.5, label = 'drug group')
     _plt.xlabel('Psychosis Score')
     _plt.ylabel('Frequency')
+    _plt.legend(bbox_to_anchor=(1,1))
     _plt.show()
     
-    return drug_a, drug_b
+    return placebo, drug
