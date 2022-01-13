@@ -6,8 +6,8 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> # lowest_score does not contain the correct value! Did you use the correct function on the `placebo` scores?
-          >>> placebo_median == placebo.median()
+          >>> # difference_in_means does not contain the correct value! Did you subtract the mean of the `drug` scores from the mean of the `placebo` scores?
+          >>> difference_in_means == placebo.mean() - drug.mean()
           True
 
           """,
