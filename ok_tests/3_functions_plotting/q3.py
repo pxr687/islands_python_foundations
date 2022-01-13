@@ -6,8 +6,8 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> # difference_in_means does not contain the correct value! Did you subtract the mean of the `drug` scores from the mean of the `placebo` scores?
-          >>> difference_in_means == placebo.mean() - drug.mean()
+          >>> # difference_in_medians does not contain the correct value! Did you subtract the median of the `drug` scores from the median of the `placebo` scores?
+          >>> difference_in_medians == placebo.median() - drug.median()
           True
 
           """,
