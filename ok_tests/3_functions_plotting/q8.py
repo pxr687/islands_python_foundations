@@ -6,8 +6,18 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> # sorted_scores does not contain the correct value! Did you use the correct function from the list above?
-          >>> np.all(sorted_scores == np.sort(psychosis_score_200_patients))
+          >>> # n_placebo does not contain the correct value!
+          >>> n_placebo == len(placebo)
+          True
+
+          """,
+          'hidden': False,
+          'locked': False
+        },
+                {
+          'code': r"""
+          >>> # n_drug does not contain the correct value!
+          >>> n_drug == len(placebo)
           True
 
           """,
