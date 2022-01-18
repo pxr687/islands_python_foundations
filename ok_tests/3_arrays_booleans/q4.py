@@ -4,10 +4,22 @@ test = {
   'suites': [
     {
       'cases': [
+
+      {
+          'code': r"""
+          >>> # It looks like you have accidentally changed some of the elements in the `psychosis_scores_array`. Please run the following code to restore it to its proper state: psychosis_scores_array = np.array([80, 20, 14, 13, 91])
+          >>> np.array_equiv(psychosis_scores_array, np.array([80, 20, 14, 13, 91])) == True
+          True
+
+          """,
+          'hidden': False,
+          'locked': False
+        },
+
         {
           'code': r"""
-          >>> # Hmmm, second_and_third does not contain the correct names. It should contain the second and third name in ['roy', 'david','lucy', 'aiesha', 'amelia']
-          >>> second_and_third == names[1:3]
+          >>> # Hmmm, less_than_70_boolean_array does not contain the correct values. It should be a Boolean array containing a True where the corresponding element of the psychosis_scores_array is *less than* 70.
+          >>> np.array_equiv(less_than_70_boolean_array, np.array([False,  True,  True,  True, False])) == True
           True
 
           """,

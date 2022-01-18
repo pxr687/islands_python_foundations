@@ -7,7 +7,7 @@ test = {
 
       {
           'code': r"""
-          >>> # It looks like you have accidentally changed some of the elements in the `psychosis_scores` list. Please run the following code to restore it to its proper state: names = ['roy', 'david', 'lucy', 'aiesha', 'amelia']
+          >>> # It looks like you have accidentally changed some of the elements in the `psychosis_scores` list. Please run the following code to restore it to its proper state: psychosis_scores = [80, 20, 14, 13, 91]
           >>> psychosis_scores == [80, 20, 14, 13, 91]
           True
 
