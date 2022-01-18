@@ -1,10 +1,10 @@
 {
-  "name": "4_arrays_booleans",
+  "name": "3_arrays_booleans",
   "src": [
-    "4_arrays_booleans.ipynb"
+    "3_arrays_booleans.ipynb"
   ],
   "tests": {
-      "ok_tests/4_arrays_booleans/q*.py": "ok_test"
+      "ok_tests/3_arrays_booleans/q*.py": "ok_test"
   },
   "protocols": [
       "file_contents",

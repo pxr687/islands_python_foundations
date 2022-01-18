@@ -399,6 +399,15 @@ def pearson_plot(pollutant_exposure):
     _plt.xlabel('Perfect Positive \n Linear Relationship')
     
     _plt.show()
+
+def arrays_booleans_page_setup():
+	
+    psychosis_status_observations = ['psychotic', 'not_psychotic', 'not_psychotic', 'not_psychotic', 'psychotic']
+    observations_sex = ['male', 'male', 'female', 'female', 'female']
+    psychosis_scores = [80, 20, 14, 13, 91]
+    names = ['roy', 'david','lucy', 'aiesha', 'amelia']
+    
+    return psychosis_status_observations, observations_sex, psychosis_scores, names
     
 def function_plot_page_setup():
         
