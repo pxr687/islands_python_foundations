@@ -1,3 +1,5 @@
+Re-do deepnote instruction images
+
 All images of islands were generated with https://www.redblobgames.com/maps/mapgen4/
 
 Any names were generated with: https://www.fantasynamegenerators.com
