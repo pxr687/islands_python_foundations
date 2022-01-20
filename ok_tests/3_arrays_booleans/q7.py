@@ -18,8 +18,8 @@ test = {
 
         {
           'code': r"""
-          >>> # Hmmm, scores_less_than_70 does not contain the correct values. Do you use the `less_than_70_boolean_array` as a Boolean index on the `psychosis_scores_array`?
-          >>> np.array_equiv(scores_less_than_70, np.array([20, 14, 13]))
+          >>> # Hmmm, very_low_scores does not contain the correct values. Did you use the `very_low_scores_boolean_array` as a Boolean index on the `psychosis_scores_array`?
+          >>> np.array_equiv(very_low_scores, np.array([14, 13])) == True
           True
 
           """,
