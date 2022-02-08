@@ -6,8 +6,8 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> # grand_median does not contain the correct value!
-          >>> grand_median == np.median(combined_groups)
+          >>> # combined_groups does not contain all of the scores from the `placebo` group and the `drug` group. Did you use `np.append()` to combine the `placebo` group and the `drug` group arrays?
+          >>> len(np.setdiff1d(combined_groups, np.append(placebo, drug))) == 0
           True
 
           """,

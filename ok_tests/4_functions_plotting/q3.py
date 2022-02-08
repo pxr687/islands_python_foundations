@@ -6,8 +6,8 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> # difference_in_medians does not contain the correct value! Did you subtract the median of the `drug` scores from the median of the `placebo` scores?
-          >>> difference_in_medians == np.median(placebo) - np.median(drug)
+          >>> # psychosis_median does not contain the correct value! Did you use np.median() on the psychosis_scores list?
+          >>> psychosis_median == np.median(psychosis_scores)
           True
 
           """,

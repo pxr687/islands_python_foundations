@@ -6,8 +6,8 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> # drug_greater_grand_median does not contain the correct value!
-          >>> drug_greater_grand_median == np.sum(drug > grand_median)/len(drug)
+          >>> # placebo_greater_grand_median does not contain the correct value!
+          >>> placebo_greater_grand_median == np.sum(placebo > grand_median)/len(placebo)
           True
 
           """,
