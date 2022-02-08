@@ -1,10 +1,14 @@
-Re-do deepnote instruction images
+# To Do
 
-All images of islands were generated with https://www.redblobgames.com/maps/mapgen4/
+* Add this credit somewhere:
 
-Any names were generated with: https://www.fantasynamegenerators.com
+    > All images of islands were generated with https://www.redblobgames.com/maps/mapgen4/
 
-# NOTES AND TO-DO
+    > Any names were generated with: https://www.fantasynamegenerators.com
+    
+* Make page-by-page plan stating what content should be covered and map out general structure
+
+# Notes
 
 * Leave all exercises completed for now with `# !!! replace with ...`, once all okpy tests have been tested, remove answer and comment and replace with ellipsis.
 
