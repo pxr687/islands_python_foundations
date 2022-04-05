@@ -1,14 +1,8 @@
 <!-- #region -->
 
 # Idea
-First of three textbooks:
 
-`Islands: Python Foundations for Data Analysis` : introduction to python for statistics (standalone book, current repo)
-
-`Islands: Generalized Linear Models` : a short introduction to generalized linear models, which assumes undergraduate statistics knowledge
-
-`Islands: Data Analysis & Statistics with Python` : Python foundations will form first few chapters of this book. Then the book with progress from 'how to read a formula' -> classical statistical tests -> generalized linear models. Any changes made to the chapters shared between this and Python Foundations will need to be synced.
-
+https://github.com/pxr687/islands_idea
 
 # To Do
 
