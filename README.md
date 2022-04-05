@@ -6,6 +6,7 @@ https://github.com/pxr687/islands_idea
 
 # To Do
 
+* Loop through pages sequentially and finish first pass
 * Add this credit somewhere:
 
     > All images of islands were generated with https://www.redblobgames.com/maps/mapgen4/
