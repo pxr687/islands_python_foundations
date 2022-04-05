@@ -18,7 +18,7 @@
 
 * Leave all exercises completed for now with `# !!! replace with ...`, once all okpy tests have been tested, remove answer and comment and replace with ellipsis.
 
-* r_ify() function must be run in a separate cell to `import matplotlib.pyplot`, else figsize changes may be ignored...
+* `r_ify()` function must be run in a separate cell to `import matplotlib.pyplot`, else figsize changes may be ignored...
 
 * add more intro to jupyter on the lists page (?)
 * 
