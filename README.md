@@ -8,7 +8,7 @@
     
 * Make page-by-page plan stating what content should be covered and map out general structure
 
-* 
+* Update island picture: use a different angle on the same island for every page, have a picture at the beginning of each page.
 
 # Notes
 
@@ -16,7 +16,7 @@
 
 * r_ify() function must be run in a separate cell to `import matplotlib.pyplot`, else figsize changes may be ignored...
 
-* add more intro to jupyter on the lists page
+* add more intro to jupyter on the lists page (?)
 * 
 #### Run these in deepnote terminal to overwrite any changes on deepnote and replace them with repo from github
 
