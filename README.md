@@ -1,3 +1,4 @@
+<!-- #region -->
 # To Do
 
 * Add this credit somewhere:
@@ -8,7 +9,10 @@
     
 * Make page-by-page plan stating what content should be covered and map out general structure
 
+
 * Update island picture: use a different angle on the same island for every page, have a picture at the beginning of each page.
+
+* Maybe remove line about textbook ending with real data: link to UoB DS to show example with real dataset?
 
 # Notes
 
@@ -25,3 +29,4 @@
 > git reset --hard
 > 
 > git pull
+<!-- #endregion -->
