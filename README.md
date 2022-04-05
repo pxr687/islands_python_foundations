@@ -6,13 +6,10 @@
     > All images of islands were generated with https://www.redblobgames.com/maps/mapgen4/
 
     > Any names were generated with: https://www.fantasynamegenerators.com
-    
-* Make page-by-page plan stating what content should be covered and map out general structure
-
 
 * Update island picture: use a different angle on the same island for every page, have a picture at the beginning of each page.
 
-* Maybe remove line about textbook ending with real data: link to UoB DS to show example with real dataset?
+* Maybe remove line about textbook ending with real data (on main page?): link to UoB DS to show example with real dataset?
 
 # Notes
 
