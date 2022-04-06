@@ -195,7 +195,7 @@ def raw_sample_plot(trial_df, figsize = (10,5)):
     _plt.show()
     
     
-def actual_sample_plot_repeated(trial_df, seed = 300, figsize = (10,5), num_repeats = 5):
+def actual_sample_plot_repeated(trial_df, seed = 200, figsize = (10,5), num_repeats = 5):
     '''
     This function shows the shuffling process the actual sample.'''
     
@@ -206,7 +206,7 @@ def actual_sample_plot_repeated(trial_df, seed = 300, figsize = (10,5), num_repe
     
     for i in _np.arange(num_repeats):
     
-        _np.random.seed()
+        _np.random.seed(seed)
     
         function_trial_df['x'] = x_coord
         function_trial_df['y'] = y_coord
