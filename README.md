@@ -1,4 +1,3 @@
-<!-- #region -->
 
 # Idea
 
@@ -6,7 +5,7 @@ https://github.com/pxr687/islands_idea
 
 # To Do
 
-* Loop through pages sequentially and finish first pass
+* Loop through all pages first to last and finish first pass
 * Add this credit somewhere:
 
     > All images of islands were generated with https://www.redblobgames.com/maps/mapgen4/
@@ -32,4 +31,3 @@ https://github.com/pxr687/islands_idea
 > git reset --hard
 > 
 > git pull
-<!-- #endregion -->
