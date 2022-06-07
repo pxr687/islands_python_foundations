@@ -5,7 +5,7 @@ https://github.com/pxr687/islands_idea
 
 # To Do
 
-* Loop through all pages first to last and finish first pass
+* Loop through all pages first to making pen and paper notes. Edit and re-structure if necessary, finish first pass.
 * Add this credit somewhere:
 
     > All images of islands were generated with https://www.redblobgames.com/maps/mapgen4/
